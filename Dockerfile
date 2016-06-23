@@ -49,7 +49,7 @@ RUN /bin/bash -c "mkdir -p /opt/odoo/addons" && \
     rm /opt/odoo/odoo.tar.gz
 # Execution environment 
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
-COPY ./entrypoint1.sh /
+COPY ./entrypoint.sh /
 COPY ./openerp-server.conf /etc/
 # COPY /opt/odoo/openerp-server /etc/init.d/
 # COPY ./openerp-server /etc/init.d/
