@@ -51,8 +51,8 @@ RUN /bin/bash -c "mkdir -p /opt/odoo/addons" && \
 USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint.sh /
 COPY ./openerp-server.conf /etc/
-#COPY /opt/odoo/odoo9-1.0/openerp-server /etc/init.d/
-COPY ./openerp-server /etc/init.d/
+COPY /opt/odoo/odoo9-1.0/openerp-server /etc/init.d/
+# COPY ./openerp-server /etc/init.d/
 RUN chown odoo:odoo /etc/openerp-server.conf
 RUN chmod 640 /etc/openerp-server.conf
 RUN chmod 755 /etc/init.d/openerp-server
@@ -69,4 +69,4 @@ VOLUME ["/opt/odoo", "/mnt/extra-addons"]
 EXPOSE 8069 8071 # Set the default config file 
 ENV OPENERP_SERVER /etc/openerp-server.conf # Set default user when running the container 
 USER odoo ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/opt/odoo/openerp-server"]
+CMD ["/opt/odoo/odoo9-1.0/openerp-server"]
