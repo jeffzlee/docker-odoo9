@@ -37,8 +37,6 @@ RUN adduser --system --quiet --shell=/bin/bash --home=/opt/odoo --gecos 'ODOO' -
 #Create Log directory ----" 
 RUN mkdir -p /var/log/odoo
 RUN chown odoo:odoo /var/log/odoo
-USER 0
-USER odoo
 # Install Odoo 
 # ADD https://nightly.odoo.com/9.0/nightly/src/odoo_9.0c.latest.tar.gz /opt/odoo/odoo.tar.gz
 ADD https://github.com/kedaerp/odoo9/archive/v1.0.tar.gz /opt/odoo/odoo.tar.gz
@@ -50,8 +48,8 @@ RUN /bin/bash -c "mkdir -p /opt/odoo/addons" && \
     cd /opt/odoo/ && \
     rm /opt/odoo/odoo.tar.gz
 # Execution environment 
-USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
-COPY ./entrypoint.sh /
+# USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
+COPY ./entrypoint1.sh /
 COPY ./openerp-server.conf /etc/
 # COPY /opt/odoo/openerp-server /etc/init.d/
 # COPY ./openerp-server /etc/init.d/
