@@ -51,8 +51,8 @@ RUN /bin/bash -c "mkdir -p /opt/odoo/addons" && \
 USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint.sh /
 COPY ./openerp-server.conf /etc/
-COPY /opt/odoo/odoo9-1.0/openerp-server /etc/init.d/
-# COPY ./openerp-server /etc/init.d/
+#COPY /opt/odoo/odoo9-1.0/openerp-server /etc/init.d/
+COPY ./openerp-server /etc/init.d/
 RUN chown odoo:odoo /etc/openerp-server.conf
 RUN chmod 640 /etc/openerp-server.conf
 RUN chmod 755 /etc/init.d/openerp-server
