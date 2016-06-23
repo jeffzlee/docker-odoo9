@@ -52,7 +52,7 @@ RUN /bin/bash -c "mkdir -p /opt/odoo/addons" && \
 COPY ./entrypoint.sh /
 COPY ./openerp-server.conf /etc/
 # COPY /opt/odoo/openerp-server /etc/init.d/
-# COPY ./openerp-server /etc/init.d/
+COPY ./openerp-server /etc/init.d/
 RUN chown odoo:odoo /etc/openerp-server.conf
 RUN chmod 640 /etc/openerp-server.conf
 #RUN chmod 755 /etc/init.d/openerp-server
