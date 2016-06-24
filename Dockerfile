@@ -55,12 +55,12 @@ COPY ./openerp-server.conf /etc/
 COPY ./openerp-server /etc/init.d/
 RUN chown odoo:odoo /etc/openerp-server.conf
 RUN chmod 640 /etc/openerp-server.conf
-#RUN chmod 755 /etc/init.d/openerp-server
-#RUN chown root: /etc/init.d/openerp-server
+RUN chmod 755 /etc/init.d/openerp-server
+RUN chown root: /etc/init.d/openerp-server
 # Create service sudo service odoo-server start 
-#RUN update-rc.d openerp-server defaults
+RUN update-rc.d openerp-server defaults
 # Start odoo service 
-#RUN service openerp-server start
+RUN service openerp-server start
 # Mount /opt/odoo to allow restoring filestore and /mnt/extra-addons for users addons 
 RUN mkdir -p /mnt/extra-addons \
         && chown -R odoo /mnt/extra-addons
