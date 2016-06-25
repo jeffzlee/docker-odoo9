@@ -63,7 +63,7 @@ RUN chown root: /etc/init.d/openerp-server
 # Create service sudo service odoo-server start 
 RUN update-rc.d openerp-server defaults
 # Start odoo service 
-RUN service openerp-server status
+# RUN service openerp-server status
 # Mount /opt/odoo to allow restoring filestore and /mnt/extra-addons for users addons 
 RUN mkdir -p /mnt/extra-addons \
         && chown -R odoo /mnt/extra-addons
