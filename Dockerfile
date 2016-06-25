@@ -79,8 +79,9 @@ COPY ./openerp-server.conf /etc/
 # Start odoo service 
 # RUN service openerp-server status
 # Mount /opt/odoo to allow restoring filestore and /mnt/extra-addons for users addons 
-RUN mkdir -p /mnt/extra-addons \
-        && chown -R odoo /mnt/extra-addons
+RUN mkdir -p /mnt/extra-addons 
+# \
+#        && chown -R odoo /mnt/extra-addons
 VOLUME ["/opt/odoo", "/mnt/extra-addons"]
 # Expose Odoo services 
 EXPOSE 8069 8071 
