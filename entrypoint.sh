@@ -13,13 +13,13 @@ export PGHOST PGPORT PGUSER PGPASSWORD
 case "$1" in
 	--)
 		shift
-		exec openerp-server "$@"
+		exec gosu openerp-server "$@"
 		;;
 	-*)
-		exec openerp-server "$@"
+		exec gosu openerp-server "$@"
 		;;
 	*)
-		exec "$@"
+		exec gosu "$@"
 esac
 
 exit 1
