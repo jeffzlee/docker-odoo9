@@ -1,5 +1,8 @@
-
 FROM ubuntu:14.04 
+ENV DB_PORT_5432_TCP_ADDR=0.0.0.0 \ 
+    DB_PORT_5432_TCP_PORT=5432 \ 
+    DB_ENV_POSTGRES_USER="odoo"   \ 
+    DB_ENV_POSTGRES_PASSWORD="odoo" 
 RUN set -x; \
         apt-get update \
         && apt-get install -y \
