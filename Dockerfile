@@ -53,11 +53,11 @@ RUN rm wkhtmltox.deb
 RUN adduser --system --quiet --shell=/bin/bash --home=/opt/odoo --gecos 'ODOO' --group odoo
 #Create Log directory ----" 
 RUN mkdir -p /var/log/odoo
-RUN chown odoo:odoo /var/log/odoo
+#RUN chown odoo:odoo /var/log/odoo
 # Install Odoo 
 # ADD https://nightly.odoo.com/9.0/nightly/src/odoo_9.0c.latest.tar.gz /opt/odoo/odoo.tar.gz
 ADD https://github.com/kedaerp/odoo9/archive/v1.0.tar.gz /opt/odoo/odoo.tar.gz
-RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
+# RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
 # Change User to Odoo 
 # USER odoo 
 RUN tar -xvzf /opt/odoo/odoo.tar.gz -C /opt/odoo --strip-components 1
@@ -70,10 +70,10 @@ COPY ./entrypoint.sh /
 COPY ./openerp-server.conf /etc/
 # COPY /opt/odoo/openerp-server /etc/init.d/
 COPY ./openerp-server /etc/init.d/
-RUN chown odoo:odoo /etc/openerp-server.conf
-RUN chmod 640 /etc/openerp-server.conf
-RUN chmod 755 /etc/init.d/openerp-server
-RUN chown root: /etc/init.d/openerp-server
+#RUN chown odoo:odoo /etc/openerp-server.conf
+#RUN chmod 640 /etc/openerp-server.conf
+#RUN chmod 755 /etc/init.d/openerp-server
+#RUN chown root: /etc/init.d/openerp-server
 # Create service sudo service odoo-server start 
 RUN update-rc.d openerp-server defaults
 # Start odoo service 
