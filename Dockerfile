@@ -1,4 +1,4 @@
-FROM ubuntu:14.04 
+FROM debian:jessie
 
 # Execution environment 
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
