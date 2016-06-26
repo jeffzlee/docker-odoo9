@@ -4,8 +4,7 @@ FROM debian:jessie
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint1.sh /
 COPY ./openerp-server.conf /etc/
-RUN cd /etc 
-RUN ls -l
+
 # COPY /opt/odoo/openerp-server /etc/init.d/
 #COPY ./openerp-server /etc/init.d/
 #RUN chown odoo:odoo /etc/openerp-server.conf
@@ -27,5 +26,5 @@ EXPOSE 8069 8071
 ENV OPENERP_SERVER /etc/openerp-server.conf 
 # Set default user when running the container 
 #USER odoo 
-ENTRYPOINT ["/entrypoint1.sh"]
+#ENTRYPOINT ["/entrypoint1.sh"]
 #CMD ["/opt/odoo/openerp-server"]
