@@ -4,6 +4,8 @@ FROM debian:jessie
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint1.sh /
 COPY ./openerp-server.conf /etc/
+RUN cd /etc 
+RUN ls -l
 # COPY /opt/odoo/openerp-server /etc/init.d/
 #COPY ./openerp-server /etc/init.d/
 #RUN chown odoo:odoo /etc/openerp-server.conf
