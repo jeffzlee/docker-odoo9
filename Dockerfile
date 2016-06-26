@@ -1,8 +1,8 @@
 FROM ubuntu:14.04 
-#ENV DB_PORT_5432_TCP_ADDR 0.0.0.0 \ 
-#    DB_PORT_5432_TCP_PORT 5432 \ 
-#    DB_ENV_POSTGRES_USER odoo   \ 
-#    DB_ENV_POSTGRES_PASSWORD odoo
+ENV DB_PORT_5432_TCP_ADDR = 0.0.0.0 \ 
+    DB_PORT_5432_TCP_PORT = 5432 \ 
+    DB_ENV_POSTGRES_USER = odoo   \ 
+    DB_ENV_POSTGRES_PASSWORD = odoo
 
 ENV GOSU_VERSION 1.7
 RUN set -x \
@@ -88,6 +88,6 @@ EXPOSE 8069 8071
 # Set the default config file 
 ENV OPENERP_SERVER /etc/openerp-server.conf 
 # Set default user when running the container 
-# USER odoo 
+USER odoo 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/opt/odoo/openerp-server"]
