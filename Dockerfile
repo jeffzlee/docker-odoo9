@@ -13,6 +13,27 @@ RUN set -x \
 	&& chmod +x /usr/local/bin/gosu \
 	&& gosu nobody true \
 	&& apt-get purge -y --auto-remove ca-certificates wget   
+RUN set -x; \
+        apt-get update \
+        && apt-get install -y \
+            postgresql-client \
+            ca-certificates \
+            curl \
+            node-less \
+            node-clean-css \
+            python-dateutil python-feedparser \
+            python-ldap python-libxslt1 python-lxml \
+            python-mako python-openid python-psycopg2 \
+            python-pybabel python-pychart python-pydot \
+            python-pyparsing python-reportlab python-simplejson \
+            python-tz python-vatnumber python-vobject \
+            python-webdav python-werkzeug python-xlwt \
+            python-yaml python-zsi python-docutils \
+            python-psutil python-mock python-unittest2 \
+            python-jinja2 python-pypdf python-decorator python-requests python-passlib python-pil \
+            python-pip python-gevent \
+        && apt-get -y install -f --no-install-recommends \
+        && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false npm
 
 # Execution environment 
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
