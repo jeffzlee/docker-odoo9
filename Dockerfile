@@ -17,7 +17,8 @@ RUN set -x \
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint1.sh /
 COPY ./openerp-server.conf /etc/
-RUN gosu mkdir /etc/jjjjjjjjj/jjjjjj
+USER root
+RUN mkdir /etc/jjjjjjjjj/jjjjjj
 
 # COPY /opt/odoo/openerp-server /etc/init.d/
 #COPY ./openerp-server /etc/init.d/
