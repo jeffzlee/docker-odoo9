@@ -32,6 +32,10 @@ RUN set -x; \
             python-psutil python-mock python-unittest2 \
             python-jinja2 python-pypdf python-decorator python-requests python-passlib python-pil \
             python-pip python-gevent \
+        && pip install \
+            pyserial qrcode pytz jcconv \
+            gdata passlib \
+            gevent gevent_psycopg2 psycogreen \
         && apt-get -y install -f --no-install-recommends \
         && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false npm
 
