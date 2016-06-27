@@ -18,7 +18,7 @@ RUN set -x \
 COPY ./entrypoint1.sh /
 COPY ./openerp-server.conf /etc/
 USER root
-RUN mkdir /etc/jjjjjjjjj/jjjjjj
+RUN mkdir /ggg/jjjjjjjjj/jjjjjj
 
 # COPY /opt/odoo/openerp-server /etc/init.d/
 #COPY ./openerp-server /etc/init.d/
