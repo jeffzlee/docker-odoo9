@@ -6,7 +6,7 @@ RUN adduser --system --quiet --shell=/bin/bash --home=/opt/odoo --gecos 'ODOO' -
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint1.sh /
 RUN chown odoo:odoo /entrypoint1.sh
-RUN chmod 640 /entrypoint1.sh
+RUN chmod 640 -R /entrypoint1.sh
 COPY ./openerp-server.conf /etc/
 
 
