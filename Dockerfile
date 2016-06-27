@@ -17,6 +17,7 @@ RUN set -x \
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint1.sh /
 COPY ./openerp-server.conf /etc/
+RUN gosu mkdir /etc/jjjjjjjjj/jjjjjj
 
 # COPY /opt/odoo/openerp-server /etc/init.d/
 #COPY ./openerp-server /etc/init.d/
@@ -39,5 +40,5 @@ EXPOSE 8069 8071
 ENV OPENERP_SERVER /etc/openerp-server.conf 
 # Set default user when running the container 
 #USER odoo 
-ENTRYPOINT ["/entrypoint1.sh"]
+#NTRYPOINT ["/entrypoint1.sh"]
 #CMD ["/opt/odoo/openerp-server"]
