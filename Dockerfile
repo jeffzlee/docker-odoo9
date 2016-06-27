@@ -53,14 +53,15 @@ RUN tar -xvzf /opt/odoo/odoo.tar.gz -C /opt/odoo --strip-components 1
 RUN /bin/bash -c "mkdir -p /opt/odoo/addons" && \
     cd /opt/odoo/ && \
     rm /opt/odoo/odoo.tar.gz
-
+USER root
 RUN mkdir -p /var/log/odoo
 RUN chown odoo:odoo /var/log/odoo
+RUN chmod 777 -R /var/log/odoo
 # Execution environment 
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
-COPY ./entrypoint1.sh /
-RUN chown odoo:odoo /entrypoint1.sh
-RUN chmod 777  /entrypoint1.sh
+COPY ./entrypoint.sh /
+RUN chown odoo:odoo /entrypoint.sh
+RUN chmod 777  /entrypoint.sh
 COPY ./openerp-server.conf /etc/
 
 #ADD sources/pip-req.txt /opt/sources/pip-req.txt
@@ -85,5 +86,5 @@ EXPOSE 8069 8071
 ENV OPENERP_SERVER /etc/openerp-server.conf 
 # Set default user when running the container 
 USER odoo
-ENTRYPOINT ["/entrypoint1.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 #CMD ["/opt/odoo/openerp-server"]
