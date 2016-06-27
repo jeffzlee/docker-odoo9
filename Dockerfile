@@ -44,7 +44,8 @@ RUN dpkg --force-depends -i wkhtmltox.deb
 RUN cp /usr/local/bin/wkhtmltopdf /usr/bin
 RUN cp /usr/local/bin/wkhtmltoimage /usr/bin
 RUN rm wkhtmltox.deb
-
+RUN mkdir -p /var/log/odoo
+RUN chown odoo:odoo /var/log/odoo
 # Execution environment 
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint1.sh /
