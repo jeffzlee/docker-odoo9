@@ -35,6 +35,12 @@ RUN set -x; \
         && apt-get -y install -f --no-install-recommends \
         && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false npm
 
+ADD http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb wkhtmltox.deb
+RUN dpkg --force-depends -i wkhtmltox.deb
+RUN cp /usr/local/bin/wkhtmltopdf /usr/bin
+RUN cp /usr/local/bin/wkhtmltoimage /usr/bin
+RUN rm wkhtmltox.deb
+
 # Execution environment 
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint1.sh /
