@@ -39,11 +39,21 @@ RUN set -x; \
         && apt-get -y install -f --no-install-recommends \
         && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false npm
 
+
 ADD http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb wkhtmltox.deb
 RUN dpkg --force-depends -i wkhtmltox.deb
 RUN cp /usr/local/bin/wkhtmltopdf /usr/bin
 RUN cp /usr/local/bin/wkhtmltoimage /usr/bin
 RUN rm wkhtmltox.deb
+
+ADD https://github.com/kedaerp/odoo9/archive/v1.0.tar.gz /opt/odoo/odoo.tar.gz
+RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
+USER odoo 
+RUN tar -xvzf /opt/odoo/odoo.tar.gz -C /opt/odoo --strip-components 1
+RUN /bin/bash -c "mkdir -p /opt/odoo/addons" && \
+    cd /opt/odoo/ && \
+    rm /opt/odoo/odoo.tar.gz
+
 RUN mkdir -p /var/log/odoo
 RUN chown odoo:odoo /var/log/odoo
 # Execution environment 
@@ -53,7 +63,8 @@ RUN chown odoo:odoo /entrypoint1.sh
 RUN chmod 777  /entrypoint1.sh
 COPY ./openerp-server.conf /etc/
 
-
+#ADD sources/pip-req.txt /opt/sources/pip-req.txt
+#RUN pip install -r /opt/sources/pip-req.txt
 # COPY /opt/odoo/openerp-server /etc/init.d/
 #COPY ./openerp-server /etc/init.d/
 #RUN chown odoo:odoo /etc/openerp-server.conf
