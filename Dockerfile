@@ -26,5 +26,5 @@ EXPOSE 8069 8071
 ENV OPENERP_SERVER /etc/openerp-server.conf 
 # Set default user when running the container 
 #USER odoo 
-#ENTRYPOINT ["/entrypoint1.sh"]
+ENTRYPOINT ["/entrypoint1.sh"]
 #CMD ["/opt/odoo/openerp-server"]
