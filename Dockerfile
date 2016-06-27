@@ -4,6 +4,7 @@ RUN adduser --system --quiet --shell=/bin/bash --home=/opt/odoo --gecos 'ODOO' -
 # Execution environment 
 # USER 0 # Copy entrypoint script , Odoo Service script and Odoo configuration file 
 COPY ./entrypoint1.sh /
+RUN chmod -R 777 /entrypoint1.sh
 COPY ./openerp-server.conf /etc/
 
 
@@ -26,6 +27,6 @@ EXPOSE 8069 8071
 # Set the default config file 
 ENV OPENERP_SERVER /etc/openerp-server.conf 
 # Set default user when running the container 
-USER odoo 
+#USER odoo 
 ENTRYPOINT ["/entrypoint1.sh"]
 #CMD ["/opt/odoo/openerp-server"]
